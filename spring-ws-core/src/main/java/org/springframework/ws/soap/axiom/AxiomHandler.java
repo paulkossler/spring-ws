@@ -224,6 +224,8 @@ class AxiomHandler implements ContentHandler, LexicalHandler {
 	}
 
 	private Map<String, String> currentNamespaceMapping() {
+		if(namespaceMappings.size() == 0)
+			newNamespaceMapping();
 		return namespaceMappings.get(namespaceMappings.size() - 1);
 	}
 
@@ -232,7 +234,8 @@ class AxiomHandler implements ContentHandler, LexicalHandler {
 	}
 
 	private void removeNamespaceMapping() {
-		namespaceMappings.remove(namespaceMappings.size() - 1);
+		if(namespaceMapping.size() > 0)
+			namespaceMappings.remove(namespaceMappings.size() - 1);
 	}
 
 	private void removeAllNamespaceMappings() {
